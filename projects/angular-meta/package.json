@@ -1,5 +1,6 @@
 {
   "name": "angular-meta",
+  "description": "angular-meta is a lightweight and flexible SEO utility for Angular applications, designed to work seamlessly with Server-Side Rendering (SSR). It dynamically updates <meta>, <link>, and structured schema tags using route data, parameters, and URL. Easily integrate using route resolvers or a service method and customize via an API endpoint.",
   "version": "1.0.0",
   "peerDependencies": {
     "@angular/common": "^19.2.0",
@@ -8,5 +9,24 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "license": "MIT",
+  "author": {
+    "name": "Sanjib Kumar Mandal",
+    "email": "sanjib0248@gmail.com"
+  },
+  "homepage": "https://github.com/sanjib-kumar-mandal/angular-meta",
+  "bugs": "https://github.com/sanjib-kumar-mandal/angular-meta/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sanjib-kumar-mandal/angular-meta"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/sanjib-kumar-mandal"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": ["angular", "meta", "seo", "angular-meta", "meta-tags", "link-tags", "structured-data", "schema.org", "angular-seo", "angular-ssr", "ssr-meta", "angular-meta-tags", "meta-data", "dynamic-meta", "angular-universal", "meta-resolver", "angular-seo-service", "angular-head", "title-service", "meta-service"]
 }

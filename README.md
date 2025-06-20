@@ -1,59 +1,128 @@
-# Metas
+# Angular Meta
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.12.
+**Angular Meta** is a powerful and flexible SEO utility designed for Angular applications, including support for Server-Side Rendering (SSR). It allows dynamic updates of meta tags, link tags, and schema.org structured data based on route-level data or custom logic.
 
-## Development server
+---
 
-To start a local development server, run:
+## ✅ Features
 
-```bash
-ng serve
-```
+- ✅ Fully tested with Angular SSR
+- ✅ Easily configure meta information via route resolvers or services
+- ✅ Supports dynamic meta updates based on route `params`, `queryParams`, `data`, and `URL`
+- ✅ Allows flexible schema injection
+- ✅ Lightweight and easy to integrate
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 📦 Installation
 
 ```bash
-ng generate --help
+npm install angular-meta
 ```
 
-## Building
+## ⚙️ Setup
 
-To build the project run:
+mport the `provideAngularMeta` function in your root providers (typically `main.ts` or `app.config.ts`):
 
-```bash
-ng build
+```ts
+import { provideAngularMeta } from "angular-meta";
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideAngularMeta({
+      apiEndpoint: "https://your-api.com/meta",
+    }),
+    // other providers...
+  ],
+});
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 🧩 API Endpoint Contract
 
-## Running unit tests
+Your API should accept the following values in the request:
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
+```ts
+{
+  param: { [key: string]: string },
+  queryparam: { [key: string]: string },
+  data: any,
+  url: string
+}
 ```
 
-## Running end-to-end tests
+And return data in the following format:
 
-For end-to-end (e2e) testing, run:
+```ts
+interface LinkTag {
+  href?: string;
+  rel?: string;
+  type?: string;
+  title?: string;
+  media?: string;
+}
 
-```bash
-ng e2e
+interface MetaTag {
+  charset?: string;
+  content?: string;
+  httpEquiv?: string;
+  id?: string;
+  itemprop?: string;
+  name?: string;
+  property?: string;
+  scheme?: string;
+  url?: string;
+}
+
+type DataTag = LinkTag | MetaTag;
+
+export interface AngularMetaData {
+  title: string;
+  meta: Array<DataTag>;
+  schema: any;
+}
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 🚀 Usage
 
-## Additional Resources
+### Using Angular Route Resolver
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+To automatically resolve metadata when navigating:
+
+```ts
+import { angularMetaResolver } from 'angular-meta';
+
+{
+  path: 'example',
+  loadComponent: () => import('./example.component'),
+  resolve: {
+    meta: angularMetaResolver
+  }
+}
+```
+
+### Manual Usage in Component
+
+You can manually trigger metadata updates from a component or service using AngularMetaCtrl:
+
+```ts
+import { AngularMetaCtrl } from 'angular-meta';
+
+constructor(private metaCtrl: AngularMetaCtrl) {}
+
+ngOnInit() {
+  this.metaCtrl.initFromCtrl({
+    param: this.route.snapshot.paramMap,
+    queryparam: this.route.snapshot.queryParamMap,
+    data: { custom: 'value' },
+    url: this.router.url
+  });
+}
+```
+
+## 📄 License
+
+MIT
+
+## 🙌 Contribution
+
+Feel free to open issues or submit PRs to enhance functionality or fix bugs.
