@@ -109,7 +109,7 @@ import { AngularMetaCtrl } from 'angular-meta';
 import { inject } from "@angular/core";
 
 private metaCtrl = inject(AngularMetaCtrl);
-constructor(private metaCtrl: AngularMetaCtrl) {
+constructor() {
   this.metaCtrl.initFromCtrl();
 }
 ```
