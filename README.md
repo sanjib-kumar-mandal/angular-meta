@@ -106,16 +106,11 @@ You can manually trigger metadata updates from a component or service using Angu
 
 ```ts
 import { AngularMetaCtrl } from 'angular-meta';
+import { inject } from "@angular/core";
 
-constructor(private metaCtrl: AngularMetaCtrl) {}
-
-ngOnInit() {
-  this.metaCtrl.initFromCtrl({
-    param: this.route.snapshot.paramMap,
-    queryparam: this.route.snapshot.queryParamMap,
-    data: { custom: 'value' },
-    url: this.router.url
-  });
+private metaCtrl = inject(AngularMetaCtrl);
+constructor(private metaCtrl: AngularMetaCtrl) {
+  this.metaCtrl.initFromCtrl();
 }
 ```
 
