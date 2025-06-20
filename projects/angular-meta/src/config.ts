@@ -4,12 +4,12 @@ import { InjectionToken, Provider } from '@angular/core';
  * @param apiEndpoint - required
  * @param forceCreation - True to create a new element without checking whether one already exists.
  */
-export interface NgMetasConfig {
+export interface AngularMetaConfig {
   apiEndpoint: string;
   forceCreation?: boolean;
 }
-export const NG_METAS_CONFIG = new InjectionToken<NgMetasConfig>(
-  'NG_METAS_CONFIG'
+export const ANGULAR_META_CONFIG = new InjectionToken<AngularMetaConfig>(
+  'ANGULAR_META_CONFIG'
 );
 
 interface LinkTag {
@@ -34,12 +34,12 @@ interface MetaTag {
 
 type DataTag = LinkTag | MetaTag;
 
-export interface NgMetasData {
+export interface AngularMetaData {
   title: string;
   meta: Array<DataTag>;
   schema: any;
 }
 
-export function provideNgMetas(config: NgMetasConfig): Provider[] {
-  return [{ provide: NG_METAS_CONFIG, useValue: config }];
+export function provideAngularMeta(config: AngularMetaConfig): Provider[] {
+  return [{ provide: ANGULAR_META_CONFIG, useValue: config }];
 }

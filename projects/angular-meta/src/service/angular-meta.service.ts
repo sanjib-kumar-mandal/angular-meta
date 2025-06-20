@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { filter, firstValueFrom, map, of, switchMap } from 'rxjs';
-import { NG_METAS_CONFIG, NgMetasData } from '../config';
+import { ANGULAR_META_CONFIG, AngularMetaData } from '../config';
 import { Meta, Title } from '@angular/platform-browser';
 import { DOCUMENT } from '@angular/common';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
-export class NgMetasCtrl {
-  private config = inject(NG_METAS_CONFIG);
+export class AngularMetaCtrl {
+  private config = inject(ANGULAR_META_CONFIG);
   private httpClient = inject(HttpClient);
   private meta = inject(Meta);
   private title = inject(Title);
@@ -18,14 +18,14 @@ export class NgMetasCtrl {
 
   async getMetas(data: any) {
     return await firstValueFrom(
-      this.httpClient.get<NgMetasData>(this.config.apiEndpoint, {
+      this.httpClient.get<AngularMetaData>(this.config.apiEndpoint, {
         params: data,
         headers: { 'content-type': 'application/json' },
       })
     );
   }
 
-  async setMetaData(data: NgMetasData) {
+  async setMetaData(data: AngularMetaData) {
     try {
       // Set title
       this.title.setTitle(data.title);
