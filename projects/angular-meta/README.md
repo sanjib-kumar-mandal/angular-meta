@@ -2,6 +2,10 @@
 
 **Angular Meta** is a powerful and flexible SEO utility designed for Angular applications, including support for Server-Side Rendering (SSR). It allows dynamic updates of meta tags, link tags, and schema.org structured data based on route-level data or custom logic.
 
+## 📝 Related Blog
+
+Check out the detailed blog post on Medium: 👉 [Effortless Meta Tag Management in Angular: Introducing angular-meta](https://medium.com/@sanjib-kumar-mandal/effortless-meta-tag-management-in-angular-introducing-angular-meta-ca0c1b63b952).
+
 ---
 
 ## ✅ Features
@@ -114,9 +118,17 @@ constructor() {
 }
 ```
 
+## 📦 Angular Compatibility Table
+
+| Angular Version | Supported Package Version |
+| --------------- | ------------------------- |
+| Angular ≤18     | ❌ Not Supported          |
+| Angular 19      | `^1.x.x`                  |
+| Angular 20      | `^2.x.x`                  |
+
 ## 📄 License
 
-MIT
+MIT © Sanjib Kumar Mandal
 
 ## 🙌 Contribution
 

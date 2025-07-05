@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, DOCUMENT } from '@angular/core';
 import { filter, firstValueFrom, map, of, switchMap } from 'rxjs';
 import { ANGULAR_META_CONFIG, AngularMetaData } from '../config';
 import { Meta, Title } from '@angular/platform-browser';
-import { DOCUMENT } from '@angular/common';
+
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
