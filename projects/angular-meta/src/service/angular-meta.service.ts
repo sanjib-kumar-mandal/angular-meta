@@ -32,6 +32,7 @@ export class AngularMetaCtrl {
       // Set meta tags
       for (let i = 0, l = data.meta.length; i < l; i++) {
         const each: any = data.meta[i];
+        // Update or Add link tag if provided
         if (each.hasOwnProperty('href')) {
           const link = this.document.createElement('link');
           if (each.hasOwnProperty('href')) {
@@ -51,7 +52,11 @@ export class AngularMetaCtrl {
           }
           this.document.head.appendChild(link);
         } else {
+          // Add meta tag
           this.meta.addTag(each, this.config.forceCreation ?? false);
+          // There might be tags which will exists.
+          // Just update their content
+          this.meta.updateTag(each);
         }
       }
       // Set schema

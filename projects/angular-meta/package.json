@@ -1,7 +1,7 @@
 {
   "name": "angular-meta",
   "description": "angular-meta is a lightweight and flexible SEO utility for Angular applications, designed to work seamlessly with Server-Side Rendering (SSR). It dynamically updates <meta>, <link>, and structured schema tags using route data, parameters, and URL. Easily integrate using route resolvers or a service method and customize via an API endpoint.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "peerDependencies": {
     "@angular/common": "^19.2.0",
     "@angular/core": "^19.2.0"
